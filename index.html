@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dragon Dungeon — First Quest</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="flash"></div>
+<div id="app">
+
+<section id="home" class="screen active">
+  <div class="mist"></div>
+  <div class="torch torch-left"></div><div class="torch torch-right"></div>
+  <div class="hero">
+    <div class="crest">🐉</div>
+    <p class="eyebrow">FIRST QUEST · INFORMATICA</p>
+    <h1>DRAGON<br><span>DUNGEON</span></h1>
+    <p class="subtitle">THE LOST DATA</p>
+    <p class="intro">Il Drago ha rubato le quattro Gemme dei Dati.<br>Per recuperarle non servono formule magiche.<br><b>Servono occhi, logica e collaborazione.</b></p>
+    <button class="main-btn" onclick="startGame()">ENTRA NEL DUNGEON <span>➜</span></button>
+    <button class="sound-btn" onclick="toggleSound()">🔊 SUONO <span id="soundState">ON</span></button>
+  </div>
+</section>
+
+<section id="game" class="screen">
+  <header class="topbar">
+    <div class="brand">🐉 DRAGON DUNGEON</div>
+    <div class="team"><label>SQUADRA</label><input id="teamName" maxlength="20" placeholder="nome squadra"></div>
+    <div class="sound-mini" onclick="toggleSound()">🔊</div>
+  </header>
+
+  <main class="map-wrap">
+    <div class="story-box">
+      <span class="rune">✦</span>
+      <div><b>IL DUNGEON È STATO RIAPERTO.</b><br><span id="story">Le quattro gemme sono nascoste nelle stanze. Esploratele.</span></div>
+    </div>
+
+    <div class="map">
+      <div class="map-title">MAPPA DEL DUNGEON</div>
+      <div class="route r1"></div><div class="route r2"></div><div class="route r3"></div>
+      <button class="room earth" data-room="earth" onclick="openRoom('earth')"><span>🌍</span><b>LA SALA<br>DELLE MACCHINE</b><small id="status-earth">🔒</small></button>
+      <button class="room air locked" data-room="code" onclick="openRoom('code')"><span>🌬️</span><b>IL LINGUAGGIO<br>SEGRETO</b><small id="status-code">🔒</small></button>
+      <button class="room water locked" data-room="network" onclick="openRoom('network')"><span>💧</span><b>LA SALA<br>DELLA RETE</b><small id="status-network">🔒</small></button>
+      <button class="room fire locked" data-room="data" onclick="openRoom('data')"><span>🔥</span><b>LA CAMERA<br>DEI DATI</b><small id="status-data">🔒</small></button>
+      <div class="dragon"><div class="dragon-art">🐉</div><b>IL DRAGO</b><small id="dragonStatus">ATTENDE...</small></div>
+    </div>
+  </main>
+</section>
+
+<section id="room" class="screen">
+  <div class="room-bg"></div>
+  <div class="room-panel">
+    <button class="back" onclick="backMap()">← MAPPA</button>
+    <div id="roomContent"></div>
+  </div>
+</section>
+
+<section id="victory" class="screen">
+  <div class="victory">
+    <div class="crown">✦</div>
+    <p class="eyebrow">ACCESSO AUTORIZZATO</p>
+    <h1>IL DUNGEON<br>È APERTO</h1>
+    <p>Avete recuperato le quattro Gemme dei Dati.</p>
+    <div class="gems">💎 💎 💎 💎</div>
+    <p class="final-line">Avete appena scoperto che l'informatica non è solo usare un computer.<br><b>È capire come funzionano le cose.</b></p>
+    <button class="main-btn" onclick="location.reload()">NUOVA QUEST ↻</button>
+  </div>
+</section>
+</div>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
